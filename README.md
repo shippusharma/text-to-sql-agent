@@ -88,5 +88,4 @@ proxy.ts            Optional Basic auth
 
 ## Known limitations
 
-- PostgreSQL SSL connections do not verify the server certificate.
 - Only OpenAI-compatible model providers are supported.

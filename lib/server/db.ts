@@ -78,7 +78,7 @@ async function openPostgres(profile: PostgresProfile) {
     database: profile.database,
     user: profile.username,
     password: profile.password,
-    ssl: profile.ssl ? { rejectUnauthorized: false } : undefined,
+    ssl: profile.ssl ? { rejectUnauthorized: profile.sslRejectUnauthorized } : undefined,
     connectionTimeoutMillis: profile.timeoutMs,
     query_timeout: profile.timeoutMs + 5_000,
   });
@@ -94,7 +94,7 @@ async function openMysql(profile: MysqlProfile) {
     database: profile.database,
     user: profile.username,
     password: profile.password,
-    ssl: profile.ssl ? {} : undefined,
+    ssl: profile.ssl ? { rejectUnauthorized: profile.sslRejectUnauthorized } : undefined,
     connectTimeout: profile.timeoutMs,
   });
 }

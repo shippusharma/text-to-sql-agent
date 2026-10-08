@@ -6,6 +6,7 @@ const sharedConnection = {
   name: z.string().min(1, 'Database name is required.').max(80),
   description: z.string().max(240).default(''),
   ssl: z.boolean().default(false),
+  sslRejectUnauthorized: z.boolean().default(true),
   timeoutMs: z.number().int().min(1000).max(120000).default(30000),
   maxRows: z.number().int().min(1).max(10000).default(500),
   maxResponseBytes: z.number().int().min(10000).max(50000000).default(5000000),

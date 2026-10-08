@@ -20,6 +20,7 @@ function sqliteProfile(databasePath: string) {
     description: '',
     path: databasePath,
     ssl: false,
+    sslRejectUnauthorized: true,
     timeoutMs: 30_000,
     maxRows: 500,
     maxResponseBytes: 5_000_000,

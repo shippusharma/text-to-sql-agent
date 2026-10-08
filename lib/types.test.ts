@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { modelProfileSchema } from './types';
+import { connectionProfileSchema, modelProfileSchema } from './types';
 
 const profile = {
   provider: 'openai' as const,
@@ -38,4 +38,17 @@ describe('modelProfileSchema', () => {
       expect(modelProfileSchema.safeParse({ ...profile, baseUrl }).success).toBe(false);
     },
   );
+});
+
+test('database TLS certificate verification defaults to enabled', () => {
+  const parsed = connectionProfileSchema.parse({
+    dialect: 'postgresql',
+    name: 'test',
+    host: 'db.example.com',
+    database: 'analytics',
+    username: 'readonly',
+    password: 'secret',
+    ssl: true,
+  });
+  expect(parsed.sslRejectUnauthorized).toBe(true);
 });

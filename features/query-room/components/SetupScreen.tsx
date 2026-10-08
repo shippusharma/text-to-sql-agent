@@ -273,6 +273,23 @@ export default function SetupScreen(props: {
                       <span className='field-label'>Use SSL</span>
                     </span>
                   </label>
+                  {setup.ssl && (
+                    <label className='switch switch-cell'>
+                      <input
+                        type='checkbox'
+                        checked={setup.sslRejectUnauthorized}
+                        onChange={event =>
+                          setDatabaseValue('sslRejectUnauthorized', event.target.checked)
+                        }
+                      />
+                      <span className='switch-copy'>
+                        <span className='field-label'>Verify TLS certificate</span>
+                        <small>
+                          Disable only for a trusted server with a self-signed certificate.
+                        </small>
+                      </span>
+                    </label>
+                  )}
                 </div>
               )}
 

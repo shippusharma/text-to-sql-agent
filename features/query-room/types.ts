@@ -13,6 +13,7 @@ export type SetupForm = {
   password: string;
   path: string;
   ssl: boolean;
+  sslRejectUnauthorized: boolean;
   allowedObjects: string;
   timeoutMs: string;
   maxRows: string;
